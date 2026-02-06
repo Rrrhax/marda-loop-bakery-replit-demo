@@ -1,4 +1,7 @@
 run = "python app.py"
 language = "python3"
-[env]
-PYTHON_VERSION = "3.11"
+
+[deployment]
+run = ["python", "app.py"]
+static_dirs = [".", "templates"]
+skip_install = false
