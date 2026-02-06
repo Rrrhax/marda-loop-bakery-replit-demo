@@ -1,3 +1,2 @@
-flask
-aiogram
-requests
+flask==3.0.3
+aiogram==3.13.1
