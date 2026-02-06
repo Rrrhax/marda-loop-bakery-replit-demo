@@ -2,6 +2,6 @@ run = "python app.py"
 language = "python3"
 
 [deployment]
-run = ["python", "app.py"]
+run = ["python3", "app.py"]
 static_dirs = [".", "templates"]
 skip_install = false
