@@ -5,11 +5,12 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import WebAppInfo, ReplyKeyboardMarkup, KeyboardButton
 from aiogram import F
 
-with open('secrets.json') as f: secrets = json.load(f); API_TOKEN = secrets.get('telegram', {}).get('bot_token')
+API_TOKEN = os.getenv('TELEGRAM_TOKEN')
 WEBAPP_URL = os.getenv('WEBAPP_URL', 'http://localhost:5000')
 
 if not API_TOKEN:
-    raise ValueError("Set TELEGRAM_TOKEN env var")
+    print("Set TELEGRAM_TOKEN env var")
+    exit(1)
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -29,7 +30,7 @@ async def web_app_data_handler(message: types.Message):
         items = data.get('items', [])
         total = data.get('total', 0)
         items_str = ', '.join(items) if isinstance(items, list) else str(items)
-        await message.answer(f"✅ Order #{len(items) or 0} items\nItems: {items_str}\nTotal: ${total:.2f}\n\nPickup in 15min! 🚀")
+        await message.answer(f"✅ Order #{len(items) or 0} items\nItems: {items_str}\nTotal: ${total:.2f}\n\nPickup in 15min!")
     except json.JSONDecodeError:
         await message.answer("❌ Invalid order data.")
 
