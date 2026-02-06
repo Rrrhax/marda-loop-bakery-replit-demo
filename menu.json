@@ -1,0 +1,12 @@
+[
+  {"id":1,"name":"Gold Croissant","price":4.50,"cat":"pastry","type":"warm","img":"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&fm=jpg&q=85"},
+  {"id":2,"name":"YYC Iced Latte","price":5.75,"cat":"drinks","type":"cold","img":"https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&fm=jpg&q=85"},
+  {"id":3,"name":"Almond Pain","price":5.00,"cat":"pastry","type":"warm","img":"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&fm=jpg&q=85"},
+  {"id":4,"name":"Dark Hot Cocoa","price":4.75,"cat":"drinks","type":"warm","img":"https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&fm=jpg&q=85"},
+  {"id":5,"name":"Maple Iced Tea","price":3.50,"cat":"drinks","type":"cold","img":"https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&fm=jpg&q=85"},
+  {"id":6,"name":"Spiced Chai","price":5.25,"cat":"drinks","type":"warm","img":"https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&fm=jpg&q=85"},
+  {"id":7,"name":"Marda Club","price":12.50,"cat":"lunch","type":"warm","img":"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&fm=jpg&q=85"},
+  {"id":8,"name":"Avocado Sourdough","price":10.99,"cat":"lunch","type":"warm","img":"https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400&fm=jpg&q=85"},
+  {"id":9,"name":"Blueberry Muffin","price":3.50,"cat":"pastry","type":"warm","img":"https://images.unsplash.com/photo-1558401391-7899b4bd5bbf?w=400&fm=jpg&q=85"},
+  {"id":10,"name":"Flat White","price":4.25,"cat":"drinks","type":"warm","img":"https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=400&fm=jpg&q=85"}
+]
