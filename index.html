@@ -129,16 +129,12 @@
                 return;
             }
             try {
-                // Fetching in Fahrenheit and converting to Celsius
+                // Force metric (Celsius) by using 'm' flag
                 const res = await fetch('https://wttr.in/Calgary?format=%t&m&ts=' + Date.now());
                 const t = await res.text();
-                // wttr.in with ?m gives metric, but let's be sure and handle potential Fahrenheit
-                // If the user says it's in Fahrenheit, maybe the current code was fetching Fahrenheit.
-                // wttr.in defaults to locale, but format=%t usually follows the 'm' or 'u' flag.
-                // Let's force metric (Celsius) by using 'm'.
                 let tempStr = t.replace(/[°C°F+]/g, '').trim();
                 currentTemp = parseInt(tempStr) || 12;
-                console.log('Weather parsed:', t, '→', currentTemp);
+                console.log('Weather parsed (Celsius):', t, '→', currentTemp);
                 tempEl.innerText = currentTemp + "°C";
                 weatherCache = { temp: currentTemp, expires: Date.now() + 300000 };
                 renderMenu();
@@ -288,6 +284,7 @@
                 cart = {};
                 document.getElementById('fl-cart').classList.add('hidden');
 
+                // Close cart after 3 seconds
                 setTimeout(() => {
                     toggleCart(false);
                     switchView('history');
