@@ -1,40 +1,4 @@
 run = "python app.py"
 language = "python3"
-modules = ["web", "python-3.12"]
-
-[nix]
-channel = "stable-25_05"
-
-[[ports]]
-localPort = 5000
-externalPort = 80
-
-[agent]
-expertMode = true
-
-[workflows]
-runButton = "Project"
-
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Run Server"
-
-[[workflows.workflow]]
-name = "Run Server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python app.py"
-waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
-
-[deployment]
-deploymentTarget = "cloudrun"
+[env]
+PYTHON_VERSION = "3.11"
