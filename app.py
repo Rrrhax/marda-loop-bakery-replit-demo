@@ -6,7 +6,11 @@ app = Flask(__name__, static_folder='.')
 
 @app.route('/')
 def index():
-    return send_from_directory('.', 'bakery_index.html')
+    return send_from_directory('.', 'index.html')
+
+@app.route('/menu.json')
+def menu():
+    return send_from_directory('.', 'menu.json')
 
 @app.route('/api/order', methods=['POST'])
 def create_order():
@@ -35,4 +39,5 @@ def save_orders(orders):
         json.dump(orders, f, indent=2)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
