@@ -271,27 +271,32 @@
                 total: payload.total
             }));
             
+            // Show SUCCESSFUL immediately
+            const itemsStr = Object.keys(cart).map(id => menu.find(m => m.id == parseInt(id)).name + ' x' + cart[id]).join(', ');
+            const order = { id: '#'+(Math.floor(Math.random()*9000)+1000), date: new Date().toLocaleTimeString(), total: '$' + payload.total.toFixed(2), details: itemsStr };
+            orderHistory.unshift(order);
+            localStorage.setItem('bakery_history', JSON.stringify(orderHistory));
+            
+            txt.innerText = "SUCCESSFUL ✓";
+            btn.classList.remove('animate-pulse');
+            btn.style.background = "#22C55E";
+
+            cart = {};
+            document.getElementById('fl-cart').classList.add('hidden');
+
+            // Wait 4 seconds, then send data and close WebApp
             setTimeout(() => {
-                const itemsStr = Object.keys(cart).map(id => menu.find(m => m.id == parseInt(id)).name + ' x' + cart[id]).join(', ');
-                const order = { id: '#'+(Math.floor(Math.random()*9000)+1000), date: new Date().toLocaleTimeString(), total: '$' + payload.total.toFixed(2), details: itemsStr };
-                orderHistory.unshift(order);
-                localStorage.setItem('bakery_history', JSON.stringify(orderHistory));
+                // Send data to bot
+                tg.sendData(JSON.stringify({
+                    items: itemsStr.split(', '),
+                    total: payload.total
+                }));
                 
-                txt.innerText = "SUCCESSFUL";
-                btn.classList.remove('animate-pulse');
-                btn.style.background = "#22C55E";
-
-                cart = {};
-                document.getElementById('fl-cart').classList.add('hidden');
-
-                // Close cart after 4 seconds and close WebApp
+                // Close WebApp after sending data
                 setTimeout(() => {
-                    toggleCart(false);
-                    switchView('history');
-                    // Close WebApp to send data to bot
                     tg.close();
-                }, 4000);
-            }, 2500);
+                }, 500);
+            }, 4000);
         }
 
         function renderHistory() {
