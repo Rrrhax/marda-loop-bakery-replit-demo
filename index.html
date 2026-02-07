@@ -284,14 +284,13 @@
                 cart = {};
                 document.getElementById('fl-cart').classList.add('hidden');
 
-                // Close cart after 3 seconds
+                // Close cart after 4 seconds and close WebApp
                 setTimeout(() => {
                     toggleCart(false);
                     switchView('history');
-                    isProcessing = false;
-                    btn.style.background = "#1D1D1F";
-                    txt.innerText = "CONFIRM & PAY";
-                }, 3000);
+                    // Close WebApp to send data to bot
+                    tg.close();
+                }, 4000);
             }, 2500);
         }
 
