@@ -75,11 +75,10 @@ async def web_app_data_handler(message: types.Message):
             f"🕐 <i>Pickup in 15 minutes!</i>"
         )
         
-        # Add confirmation buttons
+        # Add confirmation buttons (Telegram only supports http/https URLs in inline keyboards)
         kb = InlineKeyboardMarkup(inline_keyboard=[
             [
-                InlineKeyboardButton(text="📞 Call Bakery", url="tel:+14035551234"),
-                InlineKeyboardButton(text="📍 Directions", url="https://maps.google.com/?q=Marda+Loop+Calgary")
+                InlineKeyboardButton(text="📍 Get Directions", url="https://maps.google.com/?q=Marda+Loop+Brewing+Calgary")
             ]
         ])
         
