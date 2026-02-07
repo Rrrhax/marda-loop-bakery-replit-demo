@@ -284,18 +284,19 @@
             cart = {};
             document.getElementById('fl-cart').classList.add('hidden');
 
-            // Wait 4 seconds, then send data and close WebApp
+            // Wait 4 seconds to show SUCCESSFUL, then close
             setTimeout(() => {
-                // Send data to bot
+                // Send data to bot before closing
                 tg.sendData(JSON.stringify({
                     items: itemsStr.split(', '),
                     total: payload.total
                 }));
                 
-                // Close WebApp after sending data
+                // Give bot time to receive data, then close WebApp
                 setTimeout(() => {
+                    isProcessing = false; // Reset flag
                     tg.close();
-                }, 500);
+                }, 1000);
             }, 4000);
         }
 
